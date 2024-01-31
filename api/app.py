@@ -33,8 +33,7 @@ def index():
         # for both or either fields if not available
         
         records_data = requests.get(book_url, params=params).json()
-        
-        print(records_data)
+    
         return render_template("records.html", books = records_data)
     else:
         return render_template("requests.html") 
