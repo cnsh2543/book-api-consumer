@@ -27,9 +27,6 @@ def index():
             'author': author
         }
 
-        # attempt the API call, and rename empty strings
-        # for both or either fields if not available
-        
         records_data = requests.get(book_url, params=params).json()
     
         return render_template("records.html", books = records_data)
