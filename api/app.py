@@ -4,8 +4,6 @@ import os
 
 app = Flask(__name__)
 
-
-# Get app's secret key so Flask_login can manipulate the session
 app.config['BOOK_API_URL'] = os.environ.get("BOOK_API_URL")
 
 
