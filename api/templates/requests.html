@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="container w-50 pt-4">
+
+	<script>
+        function validateInt(input) {
+            // Remove non-numeric characters from the input value
+            input.value = input.value.replace(/\D/g, '');
+        }
+
+        document.getElementById('integerForm').addEventListener('submit', function (event) {
+            var inputValue = document.getElementById('integerInput').value;
+
+            // Check if the value is not empty and is an integer
+            if (inputValue.trim() === '' || isNaN(parseInt(inputValue))) {
+                alert('Please enter a valid integer.');
+                event.preventDefault(); // Prevent form submission if validation fails
+            }
+        });
+    </script>
+
+	<div class ="mb-4">
+		<h2 class="text-center">Please enter details for the books you are looking for. All fields are optional</h2>
+	</div>
+
+	<form action="/" method="post">
+		<div class="mb-4">
+			<label for="keyword-field" class="keyword-label">ID (Non-numbers input is disallowed)</label>
+			<input type="text" id="id" class="form-control" name="id" oninput="validateInt(this)">
+		</div>
+        <div class="mb-4">
+			<label for="keyword-field" class="keyword-label">Title</label>
+			<input type="text" id="title" class="form-control" name="title">
+		</div>
+        <div class="mb-4">
+			<label for="keyword-field" class="keyword-label">Author</label>
+			<input type="text" id="author" class="form-control" name="author">
+		</div>
+        <div class="mb-4">
+			<label for="keyword-field" class="keyword-label">Publication Year (Non-numbers input is disallowed)</label>
+			<input type="text" id="pub_year" class="form-control" name="pub_year" oninput="validateInt(this)">
+		</div>
+        <div class="mb-4">
+			<label for="keyword-field" class="keyword-label">Genre</label>
+			<input type="text" id="genre" class="form-control" name="genre">
+		</div>
+	
+		<button type="submit" class="btn btn-primary" name="findIssue" id="findIssue">Submit</button>
+	</form>
+</div>
+{% endblock %}
